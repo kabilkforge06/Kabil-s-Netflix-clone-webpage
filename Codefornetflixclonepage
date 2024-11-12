@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kabilan's Web</title>
+    <style>
+        body{
+            margin: 0px;
+        }
+        .main1 {
+            width: 100vw;
+            height: 100vh;
+
+        }
+
+        .main11{
+            position: absolute;
+            top: 20px;
+            left: 25px;
+        }
+        .main11 img{
+            width: 150px;
+
+        }
+        .main12 img{
+            width: 94vw;
+            height: 300px;
+            /* filter: brightness(40%); */
+            border: 2px solid silver;
+            border-radius: 20px;
+
+        }
+        .main12{
+            position: absolute;
+            left: 3vw;
+            top: 90px;
+            width: 94vw;
+            height: 300px;
+            border: 2px solid silver;
+            border-radius: 20px;
+        }
+        .main13{
+            position: absolute;
+            top: 200px;
+            left: 15%;
+            width: 70%;
+            color: white;
+            text-align: center;
+            font-size: x-large;
+            top: 100px;
+        }
+        #img1{
+            width: 100%;
+            height: 100%;
+
+        }
+        
+        .main14{
+            position: absolute;
+            top: 45%;
+            height: 50%;
+            width: 90%;
+            left: 5%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+
+        }
+        .main14 td{
+            padding: 20px;
+        }
+        .main15 input{
+            width: 350px;
+            height: 30px;
+            background-color: rgb(45, 13, 13,0.5);
+            border: 2px solid white;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            top: 80px;
+
+
+        }
+        .main15 input::placeholder{
+            color: silver;
+            font-size: large;
+            padding-left: 20px;
+        }
+        .main15 button{
+            width: 150px;
+            height: 36px;
+            background-color: red;
+            color: white;
+            /* font-size: large; */
+            border: 2px solid white;
+            border-radius: 10px;
+
+        }
+        .main15{
+            position: absolute;
+            bottom: 7%;
+            left: 32%;
+        }
+        .img2{
+            width: 200px;
+            height: 250px;
+            border: 2px solid white;
+            border-radius: 10px;
+            
+             
+        }
+        .sub4{
+            position: relative;
+            transition: transform 0.3s ease;
+            
+             
+
+
+
+        }
+        .sub4:hover{
+            transform:scale(1.1); ;
+        }
+        .sub41{
+            position: absolute;
+            top: 1px;
+            /* margin: 0px;  */
+            color: rgb(251, 243, 243);
+            
+
+        }
+        .sub41 h1{
+            margin: 0px;
+            font-size: large;
+
+        }
+        /* .mian15{
+            position: absolute;
+            top: 850px;
+            width: 80%;
+            left: 10%;
+            display: flex;
+            flex-direction: column;
+          
+            align-items: center;
+        } */
+        .main16{
+            position: absolute;
+            right: 5%;
+            top: 20px;
+
+
+        }
+        .main16 select {
+            width: 80px;
+            height: 30px;
+            background-color: rgb(10, 6, 6);
+            border: 2px solid white;
+            border-radius: 10px;
+            color: white;
+
+
+        }
+        .main16 button{
+            width: 80px;
+            height: 30px;
+            background-color: red;
+            border-radius: 10px;
+            border: 2px solid white;
+            color: white;
+            padding: 2px;
+
+
+        }
+        #amaran{
+            color: black;
+        }
+         
+    </style>
+</head>
+<body>
+    <div class="main1">
+         <img src= " https://dnm.nflximg.net/api/v6/BvVbc2Wxr2w6QuoANoSpJKEIWjQ/AAAAQdHbjrX0uL1mH7uUW7VZ-p5GJOSNNRko_9A_12Mlv5wVYQIDy4nuupxLHxkDj9V0e1OLBs_s8ZlxFkyhPlK5XkrlTK0c7yP42LLinQdYhz8lqfgUcOH68JAbEcY45jG02gCI1NyKVf1lqxsQFmcNN5szbv8.jpg?r=aee" alt="" id="img1">
+        <div class="main11">
+            <img src=  https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png alt="">
+        </div>
+        <div class="main12">
+            <img src= "https://analyticsindiamag.com/wp-content/uploads/2019/05/apps.55787.9007199266246365.687a10a8-4c4a-4a47-8ec5-a95f70d8852d.jpg" alt="">
+        </div>
+        <div class="main13">
+            <h1>Endless entertainment start here.</h1>
+            <h1>Plans from 149.</h1>
+            <p>Cancel or switch plans at anytime.</p>
+
+        </div>
+        <div class="main14">
+            <table>
+                <tr>
+                    <td>
+                        <div class="sub4">
+                            <img src="https://image.tmdb.org/t/p/original/1cd2NsFqPL2XUW730ORASNVbBv8.jpg" alt="" class="img2">
+                            <div class="sub41">
+                                <h1>Hi Nanna</h1>
+                            </div>
+                    </td>
+                    <td>
+                        <div class="sub4">
+                            <img src="https://images.indianexpress.com/2023/09/leo3.jpg" alt="" class="img2">
+                            <div class="sub41">
+                                <h1 id="Leo">leo</h1>
+                            </div>
+                    
+
+                    </td>
+                    <td>
+                        <div class="sub4">
+                            <img src="https://m.media-amazon.com/images/M/MV5BZDJlNTc2OGMtMTdlMi00M2NmLWE2NjYtZjVlNDAzYTYyN2JjXkEyXkFqcGdeQXVyMTEzNzg0Mjkx._V1_.jpg" alt="" class="img2">
+                            <div class="sub41">
+                                <h1>kannum kannum kollaiyadithaal</h1>
+                            </div>
+                    </td>
+                    <td>
+                        <div class="sub4">
+                            <img src="https://wallpapers.com/images/hd/vaaranam-aayiram-meghna-leaning-on-surya-poster-himzhhhig1wy3y4w.jpg" alt="" class="img2">
+                            <div class="sub41">
+                                <h1>vaaranam aayiram</h1>
+                            </div>
+                    </td>
+                </tr>
+            </table>
+             
+
+            </div>
+        </div>
+         <div class="main15">
+            <table>
+                <tr>
+                    <td><input type="email" placeholder="Enter email"></td>
+                    <td><button>Submit</button></td>
+
+                </tr>
+            </table>
+
+         </div>
+         <div class="main16">
+            <table>
+                <tr>
+                    <td>
+                        <select>
+                            <option>Tamil</option>
+                            <option>English</option>
+                        </select>
+                    </td>
+                    <td>
+                        <button>sign in</button>
+                    </td>
+                </tr>
+            </table>
+         </div>
+        
+    </div>
+</body>
+</html>
