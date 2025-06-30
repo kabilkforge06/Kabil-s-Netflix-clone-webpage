@@ -51,8 +51,8 @@ That's it! No build process required.
 
 ## 📞 Connect
 
-- **Portfolio**: [your-portfolio.com](https://kabilans-portfolio.vercel.app/)
-- **LinkedIn**: [Your LinkedIn](www.linkedin.com/in/kabilanmurali)
+- **Portfolio**: [Check it out](https://kabilans-portfolio.vercel.app/)
+- **LinkedIn**: [LinkedIn](www.linkedin.com/in/kabilanmurali)
 - **Email**: kabilanmurali06@gmail.com
 
 ---
