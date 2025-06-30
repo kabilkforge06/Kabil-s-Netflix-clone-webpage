@@ -28,7 +28,7 @@ This project is my first step into full-stack development! StreamFlix is a recre
 
 1. Clone the repository
    ```bash
-   git clone https://github.com/yourusername/netflix-clone.git
+      https://github.com/kabilkforge06/Kabil-s-Netflix-clone-webpage.git
    ```
 
 2. Open `index.html` in your browser
