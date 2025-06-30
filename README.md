@@ -24,14 +24,6 @@ This project is my first step into full-stack development! StreamFlix is a recre
 - **CSS3** - Styling, animations, and responsive layout
 - **JavaScript** - Interactive functionality
 
-## 🚀 Live Demo
-
-[🔗 View Live Demo](your-demo-link-here)
-
-## 📸 Preview
-
-![Desktop View](screenshot-desktop.png)
-
 ## 🏗️ Getting Started
 
 1. Clone the repository
@@ -59,9 +51,9 @@ That's it! No build process required.
 
 ## 📞 Connect
 
-- **Portfolio**: [your-portfolio.com](your-portfolio-link)
-- **LinkedIn**: [Your LinkedIn](your-linkedin-profile)
-- **Email**: your.email@example.com
+- **Portfolio**: [your-portfolio.com](https://kabilans-portfolio.vercel.app/)
+- **LinkedIn**: [Your LinkedIn](www.linkedin.com/in/kabilanmurali)
+- **Email**: kabilanmurali06@gmail.com
 
 ---
 
