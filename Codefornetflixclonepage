@@ -3,264 +3,553 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kabilan's Web</title>
+    <title>StreamFlix - Watch Movies & Shows</title>
     <style>
-        body{
-            margin: 0px;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        .main1 {
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .hero-section {
+            position: relative;
             width: 100vw;
             height: 100vh;
-
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1574267432553-4b4628081c31?q=80&w=2069') center/cover;
+            display: flex;
+            flex-direction: column;
         }
 
-        .main11{
+        .navbar {
             position: absolute;
-            top: 20px;
-            left: 25px;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+            z-index: 100;
         }
-        .main11 img{
-            width: 150px;
 
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #e50914;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            cursor: pointer;
+            transition: transform 0.3s ease;
         }
-        .main12 img{
-            width: 94vw;
-            height: 300px;
-            /* filter: brightness(40%); */
-            border: 2px solid silver;
-            border-radius: 20px;
 
+        .logo:hover {
+            transform: scale(1.05);
         }
-        .main12{
-            position: absolute;
-            left: 3vw;
-            top: 90px;
-            width: 94vw;
-            height: 300px;
-            border: 2px solid silver;
-            border-radius: 20px;
+
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
-        .main13{
+
+        .language-select {
+            background: rgba(0,0,0,0.7);
+            border: 1px solid #333;
+            border-radius: 8px;
+            color: #fff;
+            padding: 8px 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .language-select:hover {
+            border-color: #e50914;
+            background: rgba(229,9,20,0.1);
+        }
+
+        .sign-in-btn {
+            background: #e50914;
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            padding: 10px 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(229,9,20,0.3);
+        }
+
+        .sign-in-btn:hover {
+            background: #f40612;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(229,9,20,0.4);
+        }
+
+        .hero-content {
             position: absolute;
-            top: 200px;
-            left: 15%;
-            width: 70%;
-            color: white;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             text-align: center;
-            font-size: x-large;
-            top: 100px;
+            z-index: 50;
+            max-width: 900px;
+            padding: 0 20px;
         }
-        #img1{
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-subtitle {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .email-signup {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 40px;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .email-input {
+            background: rgba(0,0,0,0.7);
+            border: 1px solid #333;
+            border-radius: 8px;
+            color: #fff;
+            padding: 15px 20px;
+            font-size: 1rem;
+            width: 350px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .email-input:focus {
+            outline: none;
+            border-color: #e50914;
+            box-shadow: 0 0 15px rgba(229,9,20,0.3);
+        }
+
+        .email-input::placeholder {
+            color: #999;
+        }
+
+        .submit-btn {
+            background: #e50914;
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(229,9,20,0.3);
+        }
+
+        .submit-btn:hover {
+            background: #f40612;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(229,9,20,0.4);
+        }
+
+        .featured-content {
+            position: absolute;
+            bottom: 8%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1200px;
+            animation: fadeInUp 1s ease-out 0.8s both;
+        }
+
+        .content-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #fff;
+            text-align: center;
+        }
+
+        .movie-grid {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .movie-card {
+            position: relative;
+            width: 200px;
+            height: 280px;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        .movie-card:hover {
+            transform: scale(1.08) translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+            z-index: 10;
+        }
+
+        .movie-card img {
             width: 100%;
             height: 100%;
-
+            object-fit: cover;
+            transition: all 0.4s ease;
         }
-        
-        .main14{
+
+        .movie-card:hover img {
+            filter: brightness(1.2);
+        }
+
+        .movie-overlay {
             position: absolute;
-            top: 45%;
-            height: 50%;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+            padding: 20px 15px 15px;
+            transform: translateY(100%);
+            transition: all 0.4s ease;
+        }
+
+        .movie-card:hover .movie-overlay {
+            transform: translateY(0);
+        }
+
+        .movie-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #fff;
+        }
+
+        .movie-genre {
+            font-size: 0.8rem;
+            color: #ccc;
+            margin-bottom: 10px;
+        }
+
+        .play-btn {
+            background: #e50914;
+            border: none;
+            border-radius: 6px;
+            color: #fff;
+            padding: 8px 16px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .play-btn:hover {
+            background: #f40612;
+            transform: scale(1.05);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .floating-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 50%;
+            animation: float 6s linear infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) translateX(100px);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 20px;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.3rem;
+            }
+            
+            .email-signup {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .email-input {
+                width: 300px;
+            }
+            
+            .movie-grid {
+                gap: 15px;
+            }
+            
+            .movie-card {
+                width: 160px;
+                height: 240px;
+            }
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: #111;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            max-width: 400px;
             width: 90%;
-            left: 5%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-
-
+            box-shadow: 0 20px 60px rgba(0,0,0,0.8);
         }
-        .main14 td{
-            padding: 20px;
-        }
-        .main15 input{
-            width: 350px;
-            height: 30px;
-            background-color: rgb(45, 13, 13,0.5);
-            border: 2px solid white;
-            border-radius: 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            top: 80px;
 
-
+        .modal h2 {
+            color: #e50914;
+            margin-bottom: 15px;
         }
-        .main15 input::placeholder{
-            color: silver;
-            font-size: large;
-            padding-left: 20px;
-        }
-        .main15 button{
-            width: 150px;
-            height: 36px;
-            background-color: red;
-            color: white;
-            /* font-size: large; */
-            border: 2px solid white;
-            border-radius: 10px;
 
+        .close-btn {
+            background: #333;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s ease;
         }
-        .main15{
-            position: absolute;
-            bottom: 7%;
-            left: 32%;
+
+        .close-btn:hover {
+            background: #555;
         }
-        .img2{
-            width: 200px;
-            height: 250px;
-            border: 2px solid white;
-            border-radius: 10px;
-            
-             
-        }
-        .sub4{
-            position: relative;
-            transition: transform 0.3s ease;
-            
-             
-
-
-
-        }
-        .sub4:hover{
-            transform:scale(1.1); ;
-        }
-        .sub41{
-            position: absolute;
-            top: 1px;
-            /* margin: 0px;  */
-            color: rgb(251, 243, 243);
-            
-
-        }
-        .sub41 h1{
-            margin: 0px;
-            font-size: large;
-
-        }
-        /* .mian15{
-            position: absolute;
-            top: 850px;
-            width: 80%;
-            left: 10%;
-            display: flex;
-            flex-direction: column;
-          
-            align-items: center;
-        } */
-        .main16{
-            position: absolute;
-            right: 5%;
-            top: 20px;
-
-
-        }
-        .main16 select {
-            width: 80px;
-            height: 30px;
-            background-color: rgb(10, 6, 6);
-            border: 2px solid white;
-            border-radius: 10px;
-            color: white;
-
-
-        }
-        .main16 button{
-            width: 80px;
-            height: 30px;
-            background-color: red;
-            border-radius: 10px;
-            border: 2px solid white;
-            color: white;
-            padding: 2px;
-
-
-        }
-        #amaran{
-            color: black;
-        }
-         
     </style>
 </head>
 <body>
-    <div class="main1">
-         <img src= " https://dnm.nflximg.net/api/v6/BvVbc2Wxr2w6QuoANoSpJKEIWjQ/AAAAQdHbjrX0uL1mH7uUW7VZ-p5GJOSNNRko_9A_12Mlv5wVYQIDy4nuupxLHxkDj9V0e1OLBs_s8ZlxFkyhPlK5XkrlTK0c7yP42LLinQdYhz8lqfgUcOH68JAbEcY45jG02gCI1NyKVf1lqxsQFmcNN5szbv8.jpg?r=aee" alt="" id="img1">
-        <div class="main11">
-            <img src=  https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png alt="">
-        </div>
-        <div class="main12">
-            <img src= "https://analyticsindiamag.com/wp-content/uploads/2019/05/apps.55787.9007199266246365.687a10a8-4c4a-4a47-8ec5-a95f70d8852d.jpg" alt="">
-        </div>
-        <div class="main13">
-            <h1>Endless entertainment start here.</h1>
-            <h1>Plans from 149.</h1>
-            <p>Cancel or switch plans at anytime.</p>
+    <div class="hero-section">
+        <div class="floating-particles" id="particles"></div>
+        
+        <nav class="navbar">
+            <div class="logo">StreamFlix</div>
+            <div class="nav-controls">
+                <select class="language-select" id="languageSelect">
+                    <option value="en">English</option>
+                    <option value="ta">Tamil</option>
+                    <option value="hi">Hindi</option>
+                </select>
+                <button class="sign-in-btn" onclick="showSignIn()">Sign In</button>
+            </div>
+        </nav>
 
-        </div>
-        <div class="main14">
-            <table>
-                <tr>
-                    <td>
-                        <div class="sub4">
-                            <img src="https://image.tmdb.org/t/p/original/1cd2NsFqPL2XUW730ORASNVbBv8.jpg" alt="" class="img2">
-                            <div class="sub41">
-                                <h1>Hi Nanna</h1>
-                            </div>
-                    </td>
-                    <td>
-                        <div class="sub4">
-                            <img src="https://images.indianexpress.com/2023/09/leo3.jpg" alt="" class="img2">
-                            <div class="sub41">
-                                <h1 id="Leo">leo</h1>
-                            </div>
-                    
-
-                    </td>
-                    <td>
-                        <div class="sub4">
-                            <img src="https://m.media-amazon.com/images/M/MV5BZDJlNTc2OGMtMTdlMi00M2NmLWE2NjYtZjVlNDAzYTYyN2JjXkEyXkFqcGdeQXVyMTEzNzg0Mjkx._V1_.jpg" alt="" class="img2">
-                            <div class="sub41">
-                                <h1>kannum kannum kollaiyadithaal</h1>
-                            </div>
-                    </td>
-                    <td>
-                        <div class="sub4">
-                            <img src="https://wallpapers.com/images/hd/vaaranam-aayiram-meghna-leaning-on-surya-poster-himzhhhig1wy3y4w.jpg" alt="" class="img2">
-                            <div class="sub41">
-                                <h1>vaaranam aayiram</h1>
-                            </div>
-                    </td>
-                </tr>
-            </table>
-             
-
+        <div class="hero-content">
+            <h1 class="hero-title">Unlimited Movies & Shows</h1>
+            <h2 class="hero-subtitle">Plans starting from ₹149</h2>
+            <p class="hero-description">Cancel or switch plans anytime. Stream on any device.</p>
+            
+            <div class="email-signup">
+                <input type="email" class="email-input" placeholder="Enter your email address" id="emailInput">
+                <button class="submit-btn" onclick="handleSignup()">Get Started</button>
             </div>
         </div>
-         <div class="main15">
-            <table>
-                <tr>
-                    <td><input type="email" placeholder="Enter email"></td>
-                    <td><button>Submit</button></td>
 
-                </tr>
-            </table>
-
-         </div>
-         <div class="main16">
-            <table>
-                <tr>
-                    <td>
-                        <select>
-                            <option>Tamil</option>
-                            <option>English</option>
-                        </select>
-                    </td>
-                    <td>
-                        <button>sign in</button>
-                    </td>
-                </tr>
-            </table>
-         </div>
-        
+        <div class="featured-content">
+            <h3 class="content-title">Trending Now</h3>
+            <div class="movie-grid">
+                <div class="movie-card" onclick="playMovie('Hi Nanna')">
+                    <img src="https://image.tmdb.org/t/p/original/1cd2NsFqPL2XUW730ORASNVbBv8.jpg" alt="Hi Nanna">
+                    <div class="movie-overlay">
+                        <div class="movie-title">Hi Nanna</div>
+                        <div class="movie-genre">Drama • Family</div>
+                        <button class="play-btn">▶ Play</button>
+                    </div>
+                </div>
+                
+                <div class="movie-card" onclick="playMovie('Leo')">
+                    <img src="https://images.indianexpress.com/2023/09/leo3.jpg" alt="Leo">
+                    <div class="movie-overlay">
+                        <div class="movie-title">Leo</div>
+                        <div class="movie-genre">Action • Thriller</div>
+                        <button class="play-btn">▶ Play</button>
+                    </div>
+                </div>
+                
+                <div class="movie-card" onclick="playMovie('Kannum Kannum Kollaiyadithaal')">
+                    <img src="https://assets-in.bmscdn.com/iedb/movies/images/extra/vertical_logo/mobile/thumbnail/xxlarge/kannum-kannum-kollaiyadithaal-et00070924-15-04-2021-11-36-44.jpg" alt="Kannum Kannum Kollaiyadithaal">
+                    <div class="movie-overlay">
+                        <div class="movie-title">Kannum Kannum Kollaiyadithaal</div>
+                        <div class="movie-genre">Romance • Comedy</div>
+                        <button class="play-btn">▶ Play</button>
+                    </div>
+                </div>
+                
+                <div class="movie-card" onclick="playMovie('Vaaranam Aayiram')">
+                    <img src="https://wallpapers.com/images/hd/vaaranam-aayiram-meghna-leaning-on-surya-poster-himzhhhig1wy3y4w.jpg" alt="Vaaranam Aayiram">
+                    <div class="movie-overlay">
+                        <div class="movie-title">Vaaranam Aayiram</div>
+                        <div class="movie-genre">Drama • Romance</div>
+                        <button class="play-btn">▶ Play</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <h2 id="modalTitle">Welcome to StreamFlix!</h2>
+            <p id="modalMessage">Thank you for your interest. Please check your email for further instructions.</p>
+            <button class="close-btn" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        function createParticles() {
+            const container = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                container.appendChild(particle);
+            }
+        }
+
+        function handleSignup() {
+            const email = document.getElementById('emailInput').value;
+            if (email && email.includes('@')) {
+                showModal('Welcome to StreamFlix!', `Thank you for signing up with ${email}. Check your email for activation instructions.`);
+                document.getElementById('emailInput').value = '';
+            } else {
+                showModal('Invalid Email', 'Please enter a valid email address to continue.');
+            }
+        }
+
+        function showSignIn() {
+            showModal('Sign In', 'Sign in functionality will be available soon. Please sign up for early access!');
+        }
+
+        function playMovie(movieTitle) {
+            showModal('Now Playing', `Starting "${movieTitle}"... Enjoy your movie!`);
+        }
+
+        function showModal(title, message) {
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalMessage').textContent = message;
+            document.getElementById('modal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+
+        document.getElementById('languageSelect').addEventListener('change', function() {
+            const selectedLang = this.value;
+            if (selectedLang === 'ta') {
+                showModal('தமிழ்', 'தமிழ் மொழி விரைவில் கிடைக்கும்!');
+            } else if (selectedLang === 'hi') {
+                showModal('हिंदी', 'हिंदी भाषा जल्द ही उपलब्ध होगी!');
+            }
+        });
+
+        document.getElementById('emailInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                handleSignup();
+            }
+        });
+
+        window.addEventListener('click', function(e) {
+            const modal = document.getElementById('modal');
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+        });
+
+        const movieCards = document.querySelectorAll('.movie-card');
+        movieCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.zIndex = '10';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.zIndex = '1';
+            });
+        });
+    </script>
 </body>
 </html>
